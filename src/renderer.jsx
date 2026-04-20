@@ -1,15 +1,18 @@
-import { createRoot } from 'react-dom/client';
-import Profile from './components/profile';
+import { createRoot } from "react-dom/client";
+import Cards from "./components/cards";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const App = () => { 
+const queryClient = new QueryClient();
+
+const App = () => {
   return (
-    <>
-    <Profile />
-    </>
+    <QueryClientProvider client={queryClient}>
+      <Cards />
+    </QueryClientProvider>
   );
-}
+};
 
 const container = document.getElementById("root");
 
 const root = createRoot(container);
-root.render(<App/>);
+root.render(<App />);
